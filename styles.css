@@ -1,0 +1,93 @@
+:root {
+    font-family: "SF Pro Display", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calc-body {
+    width:auto;
+    height:auto;
+    background-color: rgb(0, 0, 0);
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+}
+
+.calc-val-display {
+    display:flex;
+    padding:20px;
+    justify-content: end;
+}
+
+.calc-val-display > h1 {
+    margin-top:40px;
+}
+
+
+.calc-btns-body {
+    padding:0 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.calc-row {
+    display:flex;
+    gap:15px;
+}
+
+/* Buttons */
+
+button {
+    border:none;
+    padding: 0;
+}
+
+.wide-btn {
+    border-radius: 50px;
+    flex:1;
+    padding: 20px 0 20px 0;
+}
+
+.normal-btn {
+    width:65px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    padding: 20px 0 20px 0;
+}
+
+.gray-btn {
+    background-color: #9CA3Af;
+}
+.dark-gray-btn {
+    background-color: #374151;
+}
+.orange-btn {
+    background-color: rgb(249 115 22);
+}
+
+/* End btns */
+
+
+.txt-white {
+    color:white;
+}
+.txt-black {
+    color:black;
+}
+h1 {
+    margin:0;
+    font-size:60px;
+}
+
+h3 {
+    font-size:24px;
+    margin: 0;
+}
