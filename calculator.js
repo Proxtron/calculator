@@ -40,13 +40,20 @@ function handleDigitInput(digit) {
 }
 
 function handleOperatorInput(newOperator) {
-    operator = newOperator
+    if(operator != '') {
+        handleEqualInput();
+    }
+    operator = newOperator;
     nextOperandFlag = true;
 }
 
 function handleEqualInput() {
-   const result = operate(operator, parseInt(operand1), parseInt(operand2));
-   document.getElementById("num-display").innerText = result; 
+    if(nextOperandFlag) {
+        const result = operate(operator, parseInt(operand1), parseInt(operand2));
+        operand1 = result + '';
+        operand2 = '0';
+        document.getElementById("num-display").innerText = result; 
+    }
 }
 
 function add(num1, num2) {
