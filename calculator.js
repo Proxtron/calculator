@@ -74,11 +74,19 @@ function handleOperatorInput(newOperator) {
 
 function handleEqualInput() {
     if(mode === 3) {
-        mode = 2;
-        const result = operate(operator, parseFloat(operand1), parseFloat(operand2));
-        operand1 = result + '';
-        operand2 = '0';
-        document.getElementById("num-display").innerText = result; 
+        //Divide by zero
+        if(operator === '/' && operand2 === '0') {
+            document.getElementById('num-display').innerText = "Nice try bro";
+            setTimeout(() => {
+                document.getElementById("num-display").innerText = operand2;
+            }, 1000)
+        } else {
+            mode = 2;
+            const result = operate(operator, parseFloat(operand1), parseFloat(operand2));
+            operand1 = result + '';
+            operand2 = '0';
+            document.getElementById("num-display").innerText = result;
+        } 
     }
 
     
