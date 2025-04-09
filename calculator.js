@@ -1,10 +1,18 @@
 let operand1 = '0';
 let operator = '';
 let operand2 = '0';
+
+//Modes:
+//  1 -> Operand 1 entering mode
+//  2 -> Operator entering mode
+//  3 -> operand 2 entering mode
+let mode = 1;
+
 let displayedNumber = '0';
-let nextOperandFlag = false;
 
 document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('num-display').innerText = operand1;
+
     const numButtons = document.querySelectorAll(".num-btn");
     numButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -20,19 +28,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("equal-btn").addEventListener("click", handleEqualInput);
-
-    
 });
 
 function handleDigitInput(digit) {
-    if(!nextOperandFlag) {
+    if(mode === 1) {
         if(operand1 === '0') {
             operand1 = digit + '';
         } else {
             operand1 += digit + '';
         }
         document.getElementById("num-display").innerText = operand1;
-    } else {
+    } 
+
+    if(mode === 2) {
+        mode = 3;
+    } 
+
+    if (mode === 3) {
         if(operand2 === '0') {
             operand2 = digit + '';
         } else {
@@ -43,26 +55,30 @@ function handleDigitInput(digit) {
 }
 
 function handleOperatorInput(newOperator) {
-    if(operator != '') {
-        handleEqualInput();
+    // if(operator != '') {
+    //     handleEqualInput();
+    // }
+    if(mode === 1) mode = 2;
+    if(mode === 2) {
+        operator = newOperator;
     }
-    operator = newOperator;
-    nextOperandFlag = true;
+    if(mode === 3) {
+        handleEqualInput();
+        operator = newOperator;
+    }
+    
 }
 
 function handleEqualInput() {
-    if(nextOperandFlag) {
-        if(document.getElementById("num-display").scrollWidth > document.getElementById("num-display").clientWidth) {
-            document.getElementById("num-display").parentElement.style.direction = "rtl"
-        } else {
-            document.getElementById("num-display").parentElement.style.direction = "ltr"
-        }
-        const result = operate(operator, parseInt(operand1), parseInt(operand2));
+    if(mode === 3) {
+        mode = 2;
+        const result = operate(operator, parseFloat(operand1), parseFloat(operand2));
         operand1 = result + '';
         operand2 = '0';
-        operator = '';
         document.getElementById("num-display").innerText = result; 
     }
+
+    
 }
 
 function add(num1, num2) {

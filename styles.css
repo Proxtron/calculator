@@ -21,7 +21,6 @@ body {
 .calc-val-display {
     display:flex;
     padding:20px;
-    direction:rtl;
 }
 
 .calc-val-display > h1 {
