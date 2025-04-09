@@ -1,6 +1,7 @@
 let operand1 = '0';
 let operator = '';
 let operand2 = '0';
+let displayedNumber = '0';
 let nextOperandFlag = false;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("equal-btn").addEventListener("click", handleEqualInput);
+
+    
 });
 
 function handleDigitInput(digit) {
@@ -49,9 +52,15 @@ function handleOperatorInput(newOperator) {
 
 function handleEqualInput() {
     if(nextOperandFlag) {
+        if(document.getElementById("num-display").scrollWidth > document.getElementById("num-display").clientWidth) {
+            document.getElementById("num-display").parentElement.style.direction = "rtl"
+        } else {
+            document.getElementById("num-display").parentElement.style.direction = "ltr"
+        }
         const result = operate(operator, parseInt(operand1), parseInt(operand2));
         operand1 = result + '';
         operand2 = '0';
+        operator = '';
         document.getElementById("num-display").innerText = result; 
     }
 }

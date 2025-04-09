@@ -12,22 +12,22 @@ body {
 }
 
 .calc-body {
-    width:auto;
+    width:355px;
     height:auto;
     background-color: rgb(0, 0, 0);
     border-radius: 25px;
-    display:flex;
-    flex-direction: column;
 }
 
 .calc-val-display {
     display:flex;
     padding:20px;
-    justify-content: end;
+    direction:rtl;
 }
 
 .calc-val-display > h1 {
     margin-top:40px;
+    overflow-x: scroll;
+    scrollbar-color: #9CA3Af #000000;
 }
 
 
