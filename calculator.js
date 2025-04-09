@@ -8,7 +8,6 @@ let operand2 = '0';
 //  3 -> operand 2 entering mode
 let mode = 1;
 
-let displayedNumber = '0';
 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('num-display').innerText = operand1;
@@ -28,7 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("equal-btn").addEventListener("click", handleEqualInput);
+    document.getElementById("clear-btn").addEventListener("click", handleClearInput);
 });
+
+
+//DOM manipulation functions - START
 
 function handleDigitInput(digit) {
     if(mode === 1) {
@@ -81,6 +84,20 @@ function handleEqualInput() {
     
 }
 
+//Resets the page to as if they just started
+function handleClearInput() {
+    operand1 = '0';
+    operator = '';
+    operand2 = '0';
+    mode = 1;
+    document.getElementById('num-display').innerText = operand1;
+}
+
+////DOM manipulation functions - END
+
+
+//Mathematical functions - START
+
 function add(num1, num2) {
     return num1 + num2;
 }
@@ -111,3 +128,5 @@ function operate(operator, num1, num2) {
             return 0;
     }
 }
+
+//Mathematical functions - END
