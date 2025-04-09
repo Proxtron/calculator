@@ -47,6 +47,7 @@ body {
 button {
     border:none;
     padding: 0;
+    cursor:pointer;
 }
 
 .wide-btn {
@@ -70,6 +71,11 @@ button {
 }
 .orange-btn {
     background-color: rgb(249 115 22);
+}
+
+.light-gray-btn {
+    transition: background-color 0.1s;
+    background-color: #F5F5F5;
 }
 
 /* End btns */

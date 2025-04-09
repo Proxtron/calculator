@@ -28,6 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("equal-btn").addEventListener("click", handleEqualInput);
     document.getElementById("clear-btn").addEventListener("click", handleClearInput);
+
+    document.querySelectorAll("button").forEach((element) => {
+        element.addEventListener("click" , () => {
+            element.classList.add("light-gray-btn");
+            setTimeout(() => {
+                element.classList.remove("light-gray-btn");
+            }, 100);
+        });
+    });
 });
 
 
