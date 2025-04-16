@@ -2,6 +2,7 @@ let operand1 = '0';
 let operator = '';
 let operand2 = '0';
 
+
 //Modes:
 //  1 -> Operand 1 entering mode
 //  2 -> Operator entering mode
@@ -37,10 +38,42 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 100);
         });
     });
+
+    document.body.addEventListener("keyup", (event) => {
+        handleKeyInput(event.key);
+    });
 });
 
 
 //DOM manipulation functions - START
+
+function handleKeyInput(key) {
+    const keyToButtonIdMap = {
+        0: "zero-btn",
+        1: "one-btn",
+        2: "two-btn",
+        3: "three-btn",
+        4: "four-btn",
+        5: "five-btn",
+        6: "six-btn",
+        7: "seven-btn",
+        8: "eight-btn",
+        9: "nine-btn",
+        "c": "clear-btn",
+        "=": "equal-btn",
+        "Enter": "equal-btn",
+        "+": "add-btn",
+        "-": "minus-btn",
+        "*": "multiply-btn",
+        "/": "divide-btn"
+    };
+    
+    if(Object.keys(keyToButtonIdMap).includes(key)) {
+        const clickEvent = new Event("click");
+        const btnId = keyToButtonIdMap[key];
+        document.getElementById(btnId).dispatchEvent(clickEvent);
+    }
+}
 
 function handleDigitInput(digit) {
     if(mode === 1) {
