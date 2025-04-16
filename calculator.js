@@ -42,10 +42,28 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("keyup", (event) => {
         handleKeyInput(event.key);
     });
+
+    document.getElementById("decimal-btn").addEventListener("click", handleDecimalInput);
 });
 
 
 //DOM manipulation functions - START
+
+function handleDecimalInput() {
+    if(mode === 1) {
+        if(!operand1.includes(".")) {
+            operand1 += ".";
+        }
+        document.getElementById("num-display").innerText = operand1;
+    }
+    if(mode === 3) {
+        if(!operand2.includes(".")) {
+            operand2 += ".";
+        }
+        document.getElementById("num-display").innerText = operand2;
+    }
+    
+}
 
 function handleKeyInput(key) {
     const keyToButtonIdMap = {
@@ -65,9 +83,10 @@ function handleKeyInput(key) {
         "+": "add-btn",
         "-": "minus-btn",
         "*": "multiply-btn",
-        "/": "divide-btn"
+        "/": "divide-btn",
+        ".": "decimal-btn"
     };
-    
+
     if(Object.keys(keyToButtonIdMap).includes(key)) {
         const clickEvent = new Event("click");
         const btnId = keyToButtonIdMap[key];
