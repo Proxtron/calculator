@@ -44,10 +44,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("decimal-btn").addEventListener("click", handleDecimalInput);
+    document.getElementById("backspace-btn").addEventListener("click", handleBackspaceInput);
 });
 
 
 //DOM manipulation functions - START
+
+function handleBackspaceInput() {
+    if(mode === 1) {
+        if(operand1.length === 1) {
+            operand1 = '0'
+        } else {
+            operand1 = operand1.slice(0, -1);
+        }
+        document.getElementById("num-display").innerText = operand1;
+    }
+    if(mode === 3) {
+        if(operand2.length === 1) {
+            operand2 = '0'
+        } else {
+            operand2 = operand2.slice(0, -1);
+        }
+        document.getElementById("num-display").innerText = operand2;
+    }
+}
 
 function handleDecimalInput() {
     if(mode === 1) {
@@ -84,7 +104,8 @@ function handleKeyInput(key) {
         "-": "minus-btn",
         "*": "multiply-btn",
         "/": "divide-btn",
-        ".": "decimal-btn"
+        ".": "decimal-btn",
+        "Backspace": "backspace-btn"
     };
 
     if(Object.keys(keyToButtonIdMap).includes(key)) {
@@ -119,9 +140,6 @@ function handleDigitInput(digit) {
 }
 
 function handleOperatorInput(newOperator) {
-    // if(operator != '') {
-    //     handleEqualInput();
-    // }
     if(mode === 1) mode = 2;
     if(mode === 2) {
         operator = newOperator;
